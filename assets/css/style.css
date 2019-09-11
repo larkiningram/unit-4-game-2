@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    background-image: url("https://wallpaperbro.com/img/423582.jpg");
+    background-size: cover;
+}
+
+
+.init {
+    border: 3px solid green;
+}
+
+.enemy{
+    opacity: 0;
+    border: 3px solid red;
+
+}
+
