@@ -8,14 +8,33 @@ body {
     background-size: cover;
 }
 
+#obi-wan, #luke, #sid, #maul {
+    background: green;
+    color: white;
+}
 
 .init {
     border: 3px solid green;
 }
 
+
 .enemy{
     opacity: 0;
     border: 3px solid red;
+}
 
+.chal{
+    border: 3px solid black;
+}
+
+#obi-wan-en, #luke-en, #sid-en, #maul-en {
+    background: red;
+    color: white; 
+}
+
+.hpe, .chal-name {
+    background: black;
+    color: white;
+    opacity: 1;
 }
 
