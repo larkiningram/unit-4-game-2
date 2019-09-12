@@ -3,10 +3,10 @@
 var hp = { obi: 120, luke: 100, sid: 140, maul: 170 };
 var ap = 6;
 var cap = {
-    obi: Math.floor(Math.random() * 24 + 8),
-    luke: Math.floor(Math.random() * 24 + 8),
-    sid: Math.floor(Math.random() * 24 + 8),
-    maul: Math.floor(Math.random() * 24 + 8)
+    obi: Math.floor(Math.random() * 15 + 5),
+    luke: Math.floor(Math.random() * 15 + 5),
+    sid: Math.floor(Math.random() * 15 + 5),
+    maul: Math.floor(Math.random() * 15 + 5)
 };
 var user = "";
 var them = "";
@@ -96,7 +96,7 @@ function userLuke() {
 
     /////
 
-    $(".luke-en").on("click", function () {
+    $(".obi-wan-en").on("click", function () {
         fightObi("luke", "obi");
     });
 
@@ -132,7 +132,7 @@ function userSid() {
         fightLuke("sid", "luke");
     });
 
-    $(".sid-en").on("click", function () {
+    $(".obi-wan-en").on("click", function () {
         fightObi("sid", "obi");
     });
 
@@ -169,7 +169,7 @@ function userMaul() {
         fightSid("maul", "sid");
     });
 
-    $(".obi-en").on("click", function () {
+    $(".obi-wan-en").on("click", function () {
         fightObi("maul", "obi");
     });
 
@@ -195,6 +195,7 @@ function fightObi(player1, player2) {
             ap += 6;
             $(".chal").html("HP: " + hp.obi);
             counterAttack(player1, player2);
+            $(".defeat").html("You attacked Obi-Wan for " + ap + " damage.");
         }
         else {
             hp.obi = 0;
@@ -217,13 +218,14 @@ function fightLuke(player1, player2) {
     $(".add").html('<input type="image" class="chal" src="assets/images/luke.jpg" name="image" width="150">');
     $(".defeat").html("");
 
-
     $("button").on("click", function () {
         if (hp.luke > 20) {
             hp.luke -= ap;
             ap += 6;
             $(".chal").html("HP: " + hp.luke);
             counterAttack(player1, player2);
+            $(".defeat").html("You attacked Luke for " + ap + " damage.");
+
         }
         else {
             hp.luke = 0;
@@ -246,13 +248,14 @@ function fightSid(player1, player2) {
     $(".add").html('<input type="image" class="chal" src="assets/images/sid.jpg" name="image" width="150">');
     $(".defeat").html("");
 
-
     $("button").on("click", function () {
         if (hp.sid > 24) {
             hp.sid -= ap;
             ap += 6;
             $(".chal").html("HP: " + hp.sid);
             counterAttack(player1, player2);
+            $(".defeat").html("You attacked Sid for " + ap + " damage.");
+
         }
         else {
             hp.sid = 0;
@@ -275,13 +278,14 @@ function fightMaul(player1, player2) {
     $(".add").html('<input type="image" class="chal" src="assets/images/maul.jpg" name="image" width="150">');
     $(".defeat").html("");
 
-
     $("button").on("click", function () {
         if (hp.maul > 20) {
             hp.maul -= ap;
             ap += 6;
             $(".chal").html("HP: " + hp.maul);
             counterAttack(player1, player2);
+            $(".defeat").html("You attacked Maul for " + ap + " damage.");
+
         }
         else {
             hp.maul = 0;
@@ -313,6 +317,7 @@ function counterAttack(player1, player2) {
             $(".hp1").html("HP: " + hp.obi);
         }
         else {
+            hp.obi = 0;
             $(".defeat").html("YOU LOST");
         }
     }
@@ -322,6 +327,7 @@ function counterAttack(player1, player2) {
             $(".hp2").html("HP: " + hp.luke);
         }
         else {
+            hp.luke = 0;
             $(".defeat").html("YOU LOST");
         }
     }
@@ -331,6 +337,7 @@ function counterAttack(player1, player2) {
             $(".hp3").html("HP: " + hp.sid);
         }
         else {
+            hp.sid = 0;
             $(".defeat").html("YOU LOST");
         }
     }
@@ -340,6 +347,7 @@ function counterAttack(player1, player2) {
             $(".hp4").html("HP: " + hp.maul);
         }
         else {
+            hp.maul = 0;
             $(".defeat").html("YOU LOST");
         }
     };
@@ -357,15 +365,15 @@ function choose() {
     $(".maul").on("click", userMaul);
 };
 
-function play() {
-    $(".obi-wan-en").on("click", fightObi);
+// function play() {
+//     $(".obi-wan-en").on("click", fightObi);
 
-    $(".luke-en").on("click", fightLuke);
+//     $(".luke-en").on("click", fightLuke);
 
-    $(".sid-en").on("click", fightSid);
+//     $(".sid-en").on("click", fightSid);
 
-    $(".maul-en").on("click", fightMaul);
-};
+//     $(".maul-en").on("click", fightMaul);
+// };
 
 function game() {
     restart();
