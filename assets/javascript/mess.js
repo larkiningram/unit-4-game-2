@@ -203,8 +203,9 @@ function fightObi(player1, player2) {
             hp.obi = 0;
             wins++;
             $(".chal").html("HP: " + hp.obi);
+            $(".ca").html("");
             $(".defeat").html("YOU'VE DEFEATED OBI-WAN KENOBI");
-        }
+        }   
     });
 };
 
@@ -234,6 +235,7 @@ function fightLuke(player1, player2) {
             hp.luke = 0;
             wins++;
             $(".chal").html("HP: " + hp.luke);
+            $(".ca").html("");
             $(".defeat").html("YOU'VE DEFEATED LUKE SKYWALKER");
         }
     });
@@ -265,6 +267,7 @@ function fightSid(player1, player2) {
             wins++;
             hp.sid = 0;
             $(".chal").html("HP: " + hp.sid);
+            $(".ca").html("");
             $(".defeat").html("YOU'VE DEFEATED DARTH SIDIOUS");
         }
     });
@@ -296,6 +299,7 @@ function fightMaul(player1, player2) {
             hp.maul = 0;
             wins++;
             $(".chal").html("HP: " + hp.maul);
+            $(".ca").html("");
             $(".defeat").html("YOU'VE DEFEATED DARTH MAUL");
             // $(".wins").html(wins);
         }
