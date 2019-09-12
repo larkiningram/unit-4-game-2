@@ -10,6 +10,8 @@ var cap = {
 };
 var user = "";
 var them = "";
+var wins = 0;
+var losses = 0;
 
 $(".hp1").html("HP: " + hp.obi);
 $(".hp2").html("HP: " + hp.luke);
@@ -199,6 +201,7 @@ function fightObi(player1, player2) {
         }
         else {
             hp.obi = 0;
+            wins++;
             $(".chal").html("HP: " + hp.obi);
             $(".defeat").html("YOU'VE DEFEATED OBI-WAN KENOBI");
         }
@@ -229,6 +232,7 @@ function fightLuke(player1, player2) {
         }
         else {
             hp.luke = 0;
+            wins++;
             $(".chal").html("HP: " + hp.luke);
             $(".defeat").html("YOU'VE DEFEATED LUKE SKYWALKER");
         }
@@ -254,10 +258,11 @@ function fightSid(player1, player2) {
             ap += 6;
             $(".chal").html("HP: " + hp.sid);
             counterAttack(player1, player2);
-            $(".defeat").html("You attacked Sid for " + ap + " damage.");
+            $(".defeat").html("You attacked Sidious for " + ap + " damage.");
 
         }
         else {
+            wins++;
             hp.sid = 0;
             $(".chal").html("HP: " + hp.sid);
             $(".defeat").html("YOU'VE DEFEATED DARTH SIDIOUS");
@@ -289,8 +294,10 @@ function fightMaul(player1, player2) {
         }
         else {
             hp.maul = 0;
+            wins++;
             $(".chal").html("HP: " + hp.maul);
             $(".defeat").html("YOU'VE DEFEATED DARTH MAUL");
+            // $(".wins").html(wins);
         }
 
     });
@@ -300,15 +307,21 @@ function counterAttack(player1, player2) {
     var power
     if (player2 === "obi") {
         power = cap.obi;
+        $(".ca").html("Obi-Wan attacked you for " + cap.obi + " points.");
     }
     else if (player2 === "luke") {
         power = cap.luke;
+        $(".ca").html("Luke attacked you for " + cap.luke + " points.");
+
     }
     else if (player2 === "sid") {
         power = cap.sid;
+        $(".ca").html("Sidious attacked you for " + cap.sid + " points.");
+
     }
     else if (player2 === "maul") {
         power = cap.maul;
+        $(".ca").html("Maul attacked you for " + cap.maul + " points.");
     };
 
     if (player1 === "obi") {
