@@ -152,9 +152,6 @@ function pickAfight() {
 
     $(".obi-wan-en").on("click", function () {
         them = "Obi-Wan";
-        // $(".enemy").animate({
-        //     opacity: "0.05"
-        // });
         $(".obi-wan-en, #obi-wan-en").animate({
             opacity: "0.05"
         });
@@ -177,17 +174,12 @@ function pickAfight() {
                 hp.obi = 0;
                 $(".chal").html("HP: " + hp.obi);
                 $(".hpe").after("YOU'VE DEFEATED OBI-WAN KENOBI");
-
-                // pickAfight();
             }
-        })
+        });
     });
 
     $(".luke-en").on("click", function () {
         them = "Luke";
-        // $(".enemy").animate({
-        //     opacity: "0.05"
-        // });
         $(".luke-en, #luke-en").animate({
             opacity: "0.05"
         });
@@ -210,18 +202,12 @@ function pickAfight() {
                 hp.luke = 0;
                 $(".chal").html("HP: " + hp.luke);
                 $(".hpe").after("YOU'VE DEFEATED LUKE SKYWALKER");
-
-                // pickAfight();
             }
-
-        })  
+        });
     });
 
     $(".sid-en").on("click", function () {
         them = "Darth Sidious";
-        // $(".enemy").animate({
-        //     opacity: "0.05"
-        // });
         $(".sid-en, #sid-en").animate({
             opacity: "0.05"
         });
@@ -244,18 +230,12 @@ function pickAfight() {
                 hp.sid = 0;
                 $(".chal").html("HP: " + hp.sid);
                 $(".hpe").after("YOU'VE DEFEATED DARTH SIDIOUS");
-
-                // pickAfight();
             }
-
-        })
+        });
     });
 
     $(".maul-en").on("click", function () {
         them = "Darth Maul";
-        // $(".enemy").animate({
-        //     opacity: "0.05"
-        // });
         $(".maul-en, #maul-en").animate({
             opacity: "0.05"
         });
@@ -278,12 +258,9 @@ function pickAfight() {
                 hp.maul = 0;
                 $(".chal").html("HP: " + hp.maul);
                 $(".hpe").after("YOU'VE DEFEATED DARTH MAUL");
-
-
-                // pickAfight();
             }
 
-        })
+        });
     });
 
     // statsUpdater();
