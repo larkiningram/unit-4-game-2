@@ -85,7 +85,7 @@ function chooseCharacter() {
         });
         you = "Obi-Wan";
         // $(".user").html(you);
-        chooseOpponent();
+        pickAfight();
 
     });
 
@@ -104,7 +104,7 @@ function chooseCharacter() {
         });
         you = "Luke";
         // $(".user").html(you);
-        chooseOpponent();
+        pickAfight();
 
     });
 
@@ -123,7 +123,7 @@ function chooseCharacter() {
         });
         you = "Darth Sidious";
         // $(".user").html(you);
-        chooseOpponent();
+        pickAfight();
 
     });
 
@@ -143,12 +143,12 @@ function chooseCharacter() {
         });
         you = "Darth Maul";
         // $(".user").html(you);
-        chooseOpponent();
+        pickAfight();
 
     });
 };
 
-function chooseOpponent() {
+function pickAfight() {
 
     $(".obi-wan-en").on("click", function () {
         them = "Obi-Wan";
@@ -164,7 +164,23 @@ function chooseOpponent() {
         });
         $(".chal").html("HP: " + hp.obi);
         $(".chal-name").after('<input type="image" class="chal" src="assets/images/obi.jpg" name="image" width="150">');
-        attack();
+
+        $("button").on("click", function () {
+            if (hp.obi > 32) {
+                hp.obi -= ap;
+                console.log(hp.obi);
+
+                ap += 6;
+                $(".chal").html("HP: " + hp.obi);
+            }
+            else {
+                hp.obi = 0;
+                $(".chal").html("HP: " + hp.obi);
+                $(".hpe").after("YOU'VE DEFEATED OBI-WAN KENOBI");
+
+                // pickAfight();
+            }
+        })
     });
 
     $(".luke-en").on("click", function () {
@@ -181,7 +197,24 @@ function chooseOpponent() {
         });
         $(".chal").html("HP: " + hp.luke);
         $(".chal-name").after('<input type="image" class="chal" src="assets/images/luke.jpg" name="image" width="150">');
-        attack();
+        
+        $("button").on("click", function () {
+            if (hp.luke > 20) {
+                hp.luke -= ap;
+                console.log(hp.luke);
+
+                ap += 6;
+                $(".chal").html("HP: " + hp.luke);
+            }
+            else {
+                hp.luke = 0;
+                $(".chal").html("HP: " + hp.luke);
+                $(".hpe").after("YOU'VE DEFEATED LUKE SKYWALKER");
+
+                // pickAfight();
+            }
+
+        })  
     });
 
     $(".sid-en").on("click", function () {
@@ -198,7 +231,24 @@ function chooseOpponent() {
         });
         $(".chal").html("HP: " + hp.sid);
         $(".chal-name").after('<input type="image" class="chal" src="assets/images/sid.jpg" name="image" width="150">');
-        attack();
+
+        $("button").on("click", function () {
+            if (hp.sid > 24) {
+                hp.sid -= ap;
+                console.log(hp.sid);
+
+                ap += 6;
+                $(".chal").html("HP: " + hp.sid);
+            }
+            else {
+                hp.sid = 0;
+                $(".chal").html("HP: " + hp.sid);
+                $(".hpe").after("YOU'VE DEFEATED DARTH SIDIOUS");
+
+                // pickAfight();
+            }
+
+        })
     });
 
     $(".maul-en").on("click", function () {
@@ -215,7 +265,25 @@ function chooseOpponent() {
         });
         $(".chal").html("HP: " + hp.maul);
         $(".chal-name").after('<input type="image" class="chal" src="assets/images/maul.jpg" name="image" width="150">');
-        attack();
+
+        $("button").on("click", function () {
+            if (hp.maul > 20) {
+                hp.maul -= ap;
+                console.log(hp.maul);
+
+                ap += 6;
+                $(".chal").html("HP: " + hp.maul);
+            }
+            else {
+                hp.maul = 0;
+                $(".chal").html("HP: " + hp.maul);
+                $(".hpe").after("YOU'VE DEFEATED DARTH MAUL");
+
+
+                // pickAfight();
+            }
+
+        })
     });
 
     // statsUpdater();
