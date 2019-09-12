@@ -1,10 +1,17 @@
 // initialize variables
 
-// var characters = {};
-var hp = { obi: 120, luke: 100, sid: 140, maul: 170};
+var hp = { 
+    obi: Math.floor(Math.random() * 76 + 100), 
+    luke: Math.floor(Math.random() * 76 + 100), 
+    sid: Math.floor(Math.random() * 76 + 100), 
+    maul: Math.floor(Math.random() * 76 + 100)};
 var ap = 6;
-var cap = {obi: 15, luke: 12, sid: 10, maul: 17};
-var you = "";
+var cap = {
+    obi: Math.floor(Math.random() * 24 + 8), 
+    luke: Math.floor(Math.random() * 24 + 8), 
+    sid: Math.floor(Math.random() * 24 + 8), 
+    maul: Math.floor(Math.random() * 24 + 8)};
+var user = "";
 var them = "";
 
 $(".hp1").html("HP: " + hp.obi);
@@ -21,19 +28,27 @@ $(".maul").attr({ healthPoints: hp, attackPower: ap, counterAttackPower: cap });
 
 // restart function
 function restart() {
-    hp = { obi: 120, luke: 100, sid: 140, maul: 170 };
+    hp = { 
+        obi: Math.floor(Math.random() * 76 + 100), 
+        luke: Math.floor(Math.random() * 76 + 100), 
+        sid: Math.floor(Math.random() * 76 + 100), 
+        maul: Math.floor(Math.random() * 76 + 100)};
     ap = 6;
-    cap = {obi: 15, luke: 12, sid: 10, maul: 17};
+    cap = {
+        obi: Math.floor(Math.random() * 24 + 8), 
+        luke: Math.floor(Math.random() * 24 + 8), 
+        sid: Math.floor(Math.random() * 24 + 8), 
+        maul: Math.floor(Math.random() * 24 + 8)};
 
     $(".obi-wan").attr({ healthPoints: hp.obi, attackPower: ap, counterAttackPower: cap });
     $(".luke").attr({ healthPoints: hp.luke, attackPower: ap, counterAttackPower: cap });
     $(".sid").attr({ healthPoints: hp.sid, attackPower: ap, counterAttackPower: cap });
     $(".maul").attr({ healthPoints: hp.maul, attackPower: ap, counterAttackPower: cap });
 
-    $("#obi-wan").html("HP: " + hp.obi);
-    $("#luke").html("HP: " + hp.luke);
-    $("#sid").html("HP: " + hp.sid);
-    $("#maul").html("HP: " + hp.maul);
+    $(".hp1").html("HP: " + hp.obi);
+    $(".hp2").html("HP: " + hp.luke);
+    $(".hp3").html("HP: " + hp.sid);
+    $(".hp4").html("HP: " + hp.maul);
 
 }
 
@@ -51,6 +66,7 @@ function userObi() {
     $(".obi-wan-en, #obi-wan-en").animate({
         opacity: "0.05"
     });
+    user = "obi";
 };
 
 function userLuke() {
@@ -66,7 +82,7 @@ function userLuke() {
     $(".luke-en, #luke-en").animate({
         opacity: "0.05"
     });
-    you = "Luke";
+    user = "luke";
 };
 
 function userSid() {
@@ -82,6 +98,7 @@ function userSid() {
     $(".sid-en, #sid-en").animate({
         opacity: "0.05"
     });
+    user = "sid";
 };
 
 function userMaul() {
@@ -98,6 +115,7 @@ function userMaul() {
     $(".maul-en, #maul-en").animate({
         opacity: "0.05"
     });
+    user = "maul";
 };
 
 function fightObi() {
@@ -113,7 +131,7 @@ function fightObi() {
     $(".chal-name").after('<input type="image" class="chal" src="assets/images/obi.jpg" name="image" width="150">');
 
     $("button").on("click", function () {
-        if (hp.obi > 32) {
+        if (hp.obi > ()) {
             hp.obi -= ap;
             console.log(hp.obi);
 
@@ -222,6 +240,44 @@ function fightMaul() {
     });
 };
 
+function counterAttack(player1, player2) {
+    var power
+    if (player2 === "obi") {
+        power = cap.obi;
+    }
+    else if (player2 === "luke") {
+        power = cap.luke;
+    }
+    else if (player2 === "sid") {
+        power = cap.sid;
+    }
+    else if (player2 === "maul") {
+        power = cap.maul;
+    };
+    
+    if (player1 === "obi") {
+        hp.obi -= power;
+        $(".hp1").html("HP: " + hp.obi);
+
+    }
+    else if (player1 === "luke") {
+        hp.luke -= power;
+        $(".hp2").html("HP: " + hp.luke);
+
+    }
+    else if (player1 === "sid") {
+        hp.sid -= power;
+        $(".hp3").html("HP: " + hp.sid);
+
+    }
+    else if (player1 === "maul") {
+        hp.maul -= power;
+        $(".hp4").html("HP: " + hp.maul);
+
+    };
+
+};
+
 
 function choose() {
     $(".obi-wan").on("click", userObi);
@@ -247,7 +303,7 @@ function game() {
     restart();
     choose();
     play();
-
+    counterAttack(user, them);
     // var again = prompt("What would you like to do? Press 'c' to continue with your character against another challenger, 'n' to select a new character, or 'q' to quit the game.");
 
     // if (again == "c") {
