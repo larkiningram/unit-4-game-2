@@ -1,10 +1,6 @@
 // initialize variables
 
-var hp = { 
-    obi: Math.floor(Math.random() * 76 + 100), 
-    luke: Math.floor(Math.random() * 76 + 100), 
-    sid: Math.floor(Math.random() * 76 + 100), 
-    maul: Math.floor(Math.random() * 76 + 100)};
+var hp = { obi: 120, luke: 100, sid: 140, maul: 170};
 var ap = 6;
 var cap = {
     obi: Math.floor(Math.random() * 24 + 8), 
@@ -28,11 +24,7 @@ $(".maul").attr({ healthPoints: hp, attackPower: ap, counterAttackPower: cap });
 
 // restart function
 function restart() {
-    hp = { 
-        obi: Math.floor(Math.random() * 76 + 100), 
-        luke: Math.floor(Math.random() * 76 + 100), 
-        sid: Math.floor(Math.random() * 76 + 100), 
-        maul: Math.floor(Math.random() * 76 + 100)};
+    hp = { obi: 120, luke: 100, sid: 140, maul: 170};
     ap = 6;
     cap = {
         obi: Math.floor(Math.random() * 24 + 8), 
@@ -128,10 +120,11 @@ function fightObi() {
         opacity: "1"
     });
     $(".chal").html("HP: " + hp.obi);
-    $(".chal-name").after('<input type="image" class="chal" src="assets/images/obi.jpg" name="image" width="150">');
+    $(".add").html('<input type="image" class="chal" src="assets/images/obi.jpg" name="image" width="150">');
+    $(".defeat").html("");
 
     $("button").on("click", function () {
-        if (hp.obi > ()) {
+        if (hp.obi > 32) {
             hp.obi -= ap;
             console.log(hp.obi);
 
@@ -141,14 +134,12 @@ function fightObi() {
         else {
             hp.obi = 0;
             $(".chal").html("HP: " + hp.obi);
-            $(".hpe").after("YOU'VE DEFEATED OBI-WAN KENOBI");
-
-            play();
+            $(".defeat").html("YOU'VE DEFEATED OBI-WAN KENOBI");
         }
     });
 };
 
-function fightLuke() {
+function fightLuke(user) {
     them = "Luke";
     $(".luke-en, #luke-en").animate({
         opacity: "0.05"
@@ -158,7 +149,9 @@ function fightLuke() {
         opacity: "1"
     });
     $(".chal").html("HP: " + hp.luke);
-    $(".chal-name").after('<input type="image" class="chal" src="assets/images/luke.jpg" name="image" width="150">');
+    $(".add").html('<input type="image" class="chal" src="assets/images/luke.jpg" name="image" width="150">');
+    $(".defeat").html("");
+
 
     $("button").on("click", function () {
         if (hp.luke > 20) {
@@ -171,11 +164,10 @@ function fightLuke() {
         else {
             hp.luke = 0;
             $(".chal").html("HP: " + hp.luke);
-            $(".hpe").after("YOU'VE DEFEATED LUKE SKYWALKER");
-
-            play();
+            $(".defeat").html("YOU'VE DEFEATED LUKE SKYWALKER");
         }
     });
+    // counterAttack(user, them);
 };
 
 function fightSid() {
@@ -188,7 +180,9 @@ function fightSid() {
         opacity: "1"
     });
     $(".chal").html("HP: " + hp.sid);
-    $(".chal-name").after('<input type="image" class="chal" src="assets/images/sid.jpg" name="image" width="150">');
+    $(".add").html('<input type="image" class="chal" src="assets/images/sid.jpg" name="image" width="150">');
+    $(".defeat").html("");
+
 
     $("button").on("click", function () {
         if (hp.sid > 24) {
@@ -201,9 +195,7 @@ function fightSid() {
         else {
             hp.sid = 0;
             $(".chal").html("HP: " + hp.sid);
-            $(".hpe").after("YOU'VE DEFEATED DARTH SIDIOUS");
-
-            play();
+            $(".defeat").html("YOU'VE DEFEATED DARTH SIDIOUS");
         }
     });
 };
@@ -218,7 +210,8 @@ function fightMaul() {
         opacity: "1"
     });
     $(".chal").html("HP: " + hp.maul);
-    $(".chal-name").after('<input type="image" class="chal" src="assets/images/maul.jpg" name="image" width="150">');
+    $(".add").html('<input type="image" class="chal" src="assets/images/maul.jpg" name="image" width="150">');
+    $(".defeat").html("");
 
 
     $("button").on("click", function () {
@@ -232,9 +225,7 @@ function fightMaul() {
         else {
             hp.maul = 0;
             $(".chal").html("HP: " + hp.maul);
-            $(".hpe").after("YOU'VE DEFEATED DARTH MAUL");
-
-            play();
+            $(".defeat").html("YOU'VE DEFEATED DARTH MAUL");
         }
 
     });
