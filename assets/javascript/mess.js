@@ -1,12 +1,13 @@
 // initialize variables
 
-var hp = { obi: 120, luke: 100, sid: 140, maul: 170};
+var hp = { obi: 120, luke: 100, sid: 140, maul: 170 };
 var ap = 6;
 var cap = {
-    obi: Math.floor(Math.random() * 24 + 8), 
-    luke: Math.floor(Math.random() * 24 + 8), 
-    sid: Math.floor(Math.random() * 24 + 8), 
-    maul: Math.floor(Math.random() * 24 + 8)};
+    obi: Math.floor(Math.random() * 24 + 8),
+    luke: Math.floor(Math.random() * 24 + 8),
+    sid: Math.floor(Math.random() * 24 + 8),
+    maul: Math.floor(Math.random() * 24 + 8)
+};
 var user = "";
 var them = "";
 
@@ -24,13 +25,14 @@ $(".maul").attr({ healthPoints: hp, attackPower: ap, counterAttackPower: cap });
 
 // restart function
 function restart() {
-    hp = { obi: 120, luke: 100, sid: 140, maul: 170};
+    hp = { obi: 120, luke: 100, sid: 140, maul: 170 };
     ap = 6;
     cap = {
-        obi: Math.floor(Math.random() * 24 + 8), 
-        luke: Math.floor(Math.random() * 24 + 8), 
-        sid: Math.floor(Math.random() * 24 + 8), 
-        maul: Math.floor(Math.random() * 24 + 8)};
+        obi: Math.floor(Math.random() * 24 + 8),
+        luke: Math.floor(Math.random() * 24 + 8),
+        sid: Math.floor(Math.random() * 24 + 8),
+        maul: Math.floor(Math.random() * 24 + 8)
+    };
 
     $(".obi-wan").attr({ healthPoints: hp.obi, attackPower: ap, counterAttackPower: cap });
     $(".luke").attr({ healthPoints: hp.luke, attackPower: ap, counterAttackPower: cap });
@@ -59,6 +61,22 @@ function userObi() {
         opacity: "0.05"
     });
     user = "obi";
+
+    /////
+
+    $(".luke-en").on("click", function () {
+        fightLuke("obi", "luke");
+    });
+
+    $(".sid-en").on("click", function () {
+        fightSid("obi", "sid");
+    });
+
+    $(".maul-en").on("click", function () {
+        fightMaul("obi", "maul");
+    });
+
+
 };
 
 function userLuke() {
@@ -75,6 +93,22 @@ function userLuke() {
         opacity: "0.05"
     });
     user = "luke";
+
+    /////
+
+    $(".luke-en").on("click", function () {
+        fightObi("luke", "obi");
+    });
+
+    $(".sid-en").on("click", function () {
+        fightSid("luke", "sid");
+    });
+
+    $(".maul-en").on("click", function () {
+        fightMaul("luke", "maul");
+    });
+
+
 };
 
 function userSid() {
@@ -91,6 +125,22 @@ function userSid() {
         opacity: "0.05"
     });
     user = "sid";
+
+    /////
+
+    $(".luke-en").on("click", function () {
+        fightLuke("sid", "luke");
+    });
+
+    $(".sid-en").on("click", function () {
+        fightObi("sid", "obi");
+    });
+
+    $(".maul-en").on("click", function () {
+        fightMaul("sid", "maul");
+    });
+
+
 };
 
 function userMaul() {
@@ -108,9 +158,25 @@ function userMaul() {
         opacity: "0.05"
     });
     user = "maul";
+
+    /////
+
+    $(".luke-en").on("click", function () {
+        fightLuke("maul", "luke");
+    });
+
+    $(".sid-en").on("click", function () {
+        fightSid("maul", "sid");
+    });
+
+    $(".obi-en").on("click", function () {
+        fightObi("maul", "obi");
+    });
+
+
 };
 
-function fightObi() {
+function fightObi(player1, player2) {
     them = "Obi-Wan";
     $(".obi-wan-en, #obi-wan-en").animate({
         opacity: "0.05"
@@ -126,10 +192,9 @@ function fightObi() {
     $("button").on("click", function () {
         if (hp.obi > 32) {
             hp.obi -= ap;
-            console.log(hp.obi);
-
             ap += 6;
             $(".chal").html("HP: " + hp.obi);
+            counterAttack(player1, player2);
         }
         else {
             hp.obi = 0;
@@ -139,7 +204,7 @@ function fightObi() {
     });
 };
 
-function fightLuke(user) {
+function fightLuke(player1, player2) {
     them = "Luke";
     $(".luke-en, #luke-en").animate({
         opacity: "0.05"
@@ -156,10 +221,9 @@ function fightLuke(user) {
     $("button").on("click", function () {
         if (hp.luke > 20) {
             hp.luke -= ap;
-            console.log(hp.luke);
-
             ap += 6;
             $(".chal").html("HP: " + hp.luke);
+            counterAttack(player1, player2);
         }
         else {
             hp.luke = 0;
@@ -167,10 +231,9 @@ function fightLuke(user) {
             $(".defeat").html("YOU'VE DEFEATED LUKE SKYWALKER");
         }
     });
-    // counterAttack(user, them);
 };
 
-function fightSid() {
+function fightSid(player1, player2) {
     them = "Darth Sidious";
     $(".sid-en, #sid-en").animate({
         opacity: "0.05"
@@ -187,10 +250,9 @@ function fightSid() {
     $("button").on("click", function () {
         if (hp.sid > 24) {
             hp.sid -= ap;
-            console.log(hp.sid);
-
             ap += 6;
             $(".chal").html("HP: " + hp.sid);
+            counterAttack(player1, player2);
         }
         else {
             hp.sid = 0;
@@ -200,7 +262,7 @@ function fightSid() {
     });
 };
 
-function fightMaul() {
+function fightMaul(player1, player2) {
     them = "Darth Maul";
     $(".maul-en, #maul-en").animate({
         opacity: "0.05"
@@ -217,10 +279,9 @@ function fightMaul() {
     $("button").on("click", function () {
         if (hp.maul > 20) {
             hp.maul -= ap;
-            console.log(hp.maul);
-
             ap += 6;
             $(".chal").html("HP: " + hp.maul);
+            counterAttack(player1, player2);
         }
         else {
             hp.maul = 0;
@@ -245,26 +306,42 @@ function counterAttack(player1, player2) {
     else if (player2 === "maul") {
         power = cap.maul;
     };
-    
-    if (player1 === "obi") {
-        hp.obi -= power;
-        $(".hp1").html("HP: " + hp.obi);
 
+    if (player1 === "obi") {
+        if (hp.obi > power) {
+            hp.obi -= power;
+            $(".hp1").html("HP: " + hp.obi);
+        }
+        else {
+            $(".defeat").html("YOU LOST");
+        }
     }
     else if (player1 === "luke") {
-        hp.luke -= power;
-        $(".hp2").html("HP: " + hp.luke);
-
+        if (hp.luke > power) {
+            hp.luke -= power;
+            $(".hp2").html("HP: " + hp.luke);
+        }
+        else {
+            $(".defeat").html("YOU LOST");
+        }
     }
     else if (player1 === "sid") {
-        hp.sid -= power;
-        $(".hp3").html("HP: " + hp.sid);
-
+        if (hp.sid > power) {
+            hp.sid -= power;
+            $(".hp3").html("HP: " + hp.sid);
+        }
+        else {
+            $(".defeat").html("YOU LOST");
+        }
     }
     else if (player1 === "maul") {
-        hp.maul -= power;
-        $(".hp4").html("HP: " + hp.maul);
-
+        if (hp.maul > power) {
+            hp.maul -= power;
+            $(".hp4").html("HP: " + hp.maul);
+        }
+        else {
+            $(".defeat").html("YOU LOST");
+        }
     };
 
 };
@@ -293,19 +370,8 @@ function play() {
 function game() {
     restart();
     choose();
-    play();
-    counterAttack(user, them);
-    // var again = prompt("What would you like to do? Press 'c' to continue with your character against another challenger, 'n' to select a new character, or 'q' to quit the game.");
-
-    // if (again == "c") {
-    //     play();
-    // }
-    // else if (again == "n") {
-    //     game();
-    // }
-    // else if (again == "q") {
-    //     restart();
-    // }
+    // play();
+    // counterwAttack(user, them);
 };
 
 game();
